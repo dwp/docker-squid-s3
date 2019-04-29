@@ -1,5 +1,6 @@
 # docker-squid-s3
-Docker container with Squid + config files retrieved from S3
+Docker container with Squid + config files retrieved from S3.
+Container images are available via https://hub.docker.com/r/dwpdigital/squid-s3.
 
 # Building
 `docker build -t squid-s3 .`
@@ -72,6 +73,6 @@ docker run \
   -e AWS_ACCESS_KEY_ID=ASIAABCDEF00GHI0JK0L
   -e AWS_SECRET_ACCESS_KEY=xaitooGheiJ4ieBaeshah3omush3Bei3wie6Ahz0
   -e AWS_ASSUMEROLE_ACCOUNT=012345678901
-  -e AWS_ASSUMEROLE_ROLE=s3_read_role squid
-  -e AWS_SESSION_TOKEN==aw8Gae3thagei6...
+  -e AWS_ASSUMEROLE_ROLE=s3_read_role
+  -e AWS_SESSION_TOKEN==aw8Gae3thagei6... squid
 ```
