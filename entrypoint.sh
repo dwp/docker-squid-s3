@@ -38,6 +38,9 @@ EOF
       PROFILE_OPTION="--profile ${AWS_ASSUMEROLE_ROLE}"
     fi
   fi
+  if [ -n "${AWS_SESSION_TOKEN}" ]; then
+    sed -i -e "/aws_secret_access_key/a aws_session_token=${AWS_SESSION_TOKEN}" ~/.aws/credentials
+  fi
 else
   echo "INFO: Using attached IAM roles/instance profiles to authenticate with S3 as no AWS_ACCESS_KEY_ID or AWS_SECRET_ACCESS_KEY have been provided"
 fi
