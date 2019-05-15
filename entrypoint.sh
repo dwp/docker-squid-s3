@@ -51,8 +51,12 @@ aws ${PROFILE_OPTION} s3 sync ${S3_URI} /etc/squid
 echo "Setting up squid logging..."
 echo "include /etc/squid/conf.d/*.conf" >> /etc/squid/squid.conf
 cat > /etc/squid/conf.d/squid-log.conf << EOF
-logfile_rotate 0
-access_log stdio:/proc/self/fd/1
+# Don't log any accesses by a TCP load balancer which doesn't provide an HTTP request
+acl hasRequest has request
+access_log none !hasRequest
+
+# Log everything else to standard output for log collectors to pick up
+access_log stdio:/dev/stdout rotate=0
 EOF
 
 echo "INFO: Starting squid..."
