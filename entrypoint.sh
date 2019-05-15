@@ -45,8 +45,15 @@ else
   echo "INFO: Using attached IAM roles/instance profiles to authenticate with S3 as no AWS_ACCESS_KEY_ID or AWS_SECRET_ACCESS_KEY have been provided"
 fi
 
-echo "INFO: Copying squid configuraiton file(s) from ${S3_URI} to /etc/squid..."
+echo "INFO: Copying squid configuration file(s) from ${S3_URI} to /etc/squid..."
 aws ${PROFILE_OPTION} s3 sync ${S3_URI} /etc/squid
+
+echo "Setting up squid logging..."
+echo "include /etc/squid/conf.d/*.conf" >> /etc/squid/squid.conf
+cat > /etc/squid/conf.d/squid-log.conf << EOF
+logfile_rotate 0
+access_log stdio:/proc/self/fd/1
+EOF
 
 echo "INFO: Starting squid..."
 exec $(which squid) -f /etc/squid/squid.conf -NYCd 1 ${SQUID_EXTRA_ARGS}
