@@ -1,6 +1,6 @@
 # Builds a docker image for Squid with config retrieved from S3
 
-FROM alpine:3.9
+FROM alpine:3.10
 
 RUN apk add --update squid python py-pip && \
     pip install awscli
