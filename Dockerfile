@@ -13,6 +13,7 @@ RUN install -d -m 0755 -o squid -g squid /etc/squid/conf.d
 RUN touch /var/run/squid.pid
 RUN chown squid:squid /var/run/squid.pid
 RUN chmod 0644 /var/run/squid.pid
+RUN chown squid:squid /etc/squid
 EXPOSE 3128/tcp
 
 USER squid
