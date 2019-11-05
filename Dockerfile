@@ -7,7 +7,7 @@ ENV GROUP_NAME=squid
 
 RUN apk update \
     && apk upgrade \
-    && apk add --update --no-cache squid python py-pip \
+    && apk add --update squid python py-pip \
     && pip install awscli
 
 COPY entrypoint.sh /sbin/entrypoint.sh
