@@ -60,4 +60,4 @@ access_log stdio:/dev/stdout rotate=0
 EOF
 
 echo "INFO: Starting squid..."
-exec $(which squid) -f /etc/squid/squid.conf -NYCd 1 ${SQUID_EXTRA_ARGS}
+exec "$(which squid) -f /etc/squid/squid.conf -NYCd 1 ${SQUID_EXTRA_ARGS}"

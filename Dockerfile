@@ -2,19 +2,33 @@
 
 FROM alpine:3.10
 
-RUN apk add --update squid python py-pip && \
-    pip install awscli
+ENV USER_NAME=squid
+ENV GROUP_NAME=squid
+
+RUN apk update \
+    && apk upgrade \
+    && apk add --no-cache squid python py-pip \
+    && pip install awscli
+
 COPY entrypoint.sh /sbin/entrypoint.sh
+
 RUN chmod 0755 /sbin/entrypoint.sh
+
 RUN install -d -m 0755 -o squid -g squid \
     /var/cache/squid /var/log/squid /var/run/squid
-RUN chown squid:squid /etc/squid/squid.conf
-RUN install -d -m 0755 -o squid -g squid /etc/squid/conf.d
+
+RUN chown ${USER_NAME}:${GROUP_NAME} /etc/squid/squid.conf
+
+RUN install -d -m 0755 -o ${USER_NAME} -g ${GROUP_NAME} /etc/squid/conf.d
+
 RUN touch /var/run/squid.pid
-RUN chown squid:squid /var/run/squid.pid
+
+RUN chown ${USER_NAME}:${GROUP_NAME} /var/run/squid.pid
 RUN chmod 0644 /var/run/squid.pid
-RUN chown squid:squid /etc/squid
+RUN chown ${USER_NAME}:${GROUP_NAME} /etc/squid
+
 EXPOSE 3128/tcp
 
-USER squid
+USER ${USER_NAME}
+
 ENTRYPOINT ["/sbin/entrypoint.sh"]
