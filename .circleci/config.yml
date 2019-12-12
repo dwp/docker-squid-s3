@@ -47,7 +47,7 @@ jobs:
           monitor-on-build: false
           project: '${CIRCLE_PROJECT_REPONAME}/pr-docker'
 
-  snyk-master:
+  snyk-temp:
     docker:
       - image: circleci/openjdk:8-jdk
     environment:
