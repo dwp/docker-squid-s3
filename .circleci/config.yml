@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  snyk: snyk/snyk@0.0.8
+  
 executors:
   docker-publisher:
     environment:
