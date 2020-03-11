@@ -1,6 +1,6 @@
 # Builds a docker image for Squid with config retrieved from S3
 
-FROM alpine:3.10
+FROM alpine:3.11
 
 ENV USER_NAME=squid
 ENV GROUP_NAME=squid
