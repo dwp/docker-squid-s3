@@ -22,7 +22,6 @@ FROM PYTHON3 AS SQUID
 
 ENV USER_NAME=squid
 ENV GROUP_NAME=squid
-ENV AWSCLI_VERSION="1.17.10-r0"
 
 RUN apk add --update squid
 
