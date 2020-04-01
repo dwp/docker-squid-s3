@@ -27,7 +27,7 @@ RUN apk add --update squid
 
 FROM SQUID AS AWSCLI
 
-RUN pip install --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --trusted-host pypi.org awscli  --user
+RUN pip install --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --trusted-host pypi.org awscli
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 
