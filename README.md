@@ -11,9 +11,9 @@ The container takes the following environment settings.
 
 ## Squid configuration file location (required)
 
-* `SQUID_CONFIG_S3_BUCKET` - Required - The name of the S3 bucket that contains
+* `ECS_SQUID_CONFIG_S3_BUCKET` - Required - The name of the S3 bucket that contains
                              squid's configuration files
-* `SQUID_CONFIG_S3_PREFIX` - Required - The S3 prefix of all of squid's
+* `ECS_SQUID_CONFIG_S3_PREFIX` - Required - The S3 prefix of all of squid's
                              configuration files in the above bucket
 
 ## AWS authentication credentials (optional)
@@ -37,16 +37,16 @@ to access S3 resources then you will need to supply the following:
 ### Running on EC2 with an instance profile, or ECS with a task execution role
 
 ```
-SQUID_CONFIG_S3_BUCKET=config-files
-SQUID_CONFIG_S3_PREFIX=squid squid
+ECS_SQUID_CONFIG_S3_BUCKET=config-files
+ECS_SQUID_CONFIG_S3_PREFIX=squid squid
 ```
 
 ### Running locally; no assume role required
 
 ```
 docker run \
-  -e SQUID_CONFIG_S3_BUCKET=config-files \
-  -e SQUID_CONFIG_S3_PREFIX=squid \
+  -e ECS_SQUID_CONFIG_S3_BUCKET=config-files \
+  -e ECS_SQUID_CONFIG_S3_PREFIX=squid \
   -e AWS_ACCESS_KEY_ID=ASIAABCDEF00GHI0JK0L \
   -e AWS_SECRET_ACCESS_KEY=xaitooGheiJ4ieBaeshah3omush3Bei3wie6Ahz0 \
   squid
@@ -56,8 +56,8 @@ docker run \
 
  ```
  docker run \
-   -e SQUID_CONFIG_S3_BUCKET=config-files
-   -e SQUID_CONFIG_S3_PREFIX=squid
+   -e ECS_SQUID_CONFIG_S3_BUCKET=config-files
+   -e ECS_SQUID_CONFIG_S3_PREFIX=squid
    -e AWS_ACCESS_KEY_ID=ASIAABCDEF00GHI0JK0L
    -e AWS_SECRET_ACCESS_KEY=xaitooGheiJ4ieBaeshah3omush3Bei3wie6Ahz0
    -e AWS_ASSUMEROLE_ACCOUNT=012345678901
@@ -68,8 +68,8 @@ docker run \
 
 ```
 docker run \
-  -e SQUID_CONFIG_S3_BUCKET=config-files
-  -e SQUID_CONFIG_S3_PREFIX=squid
+  -e ECS_SQUID_CONFIG_S3_BUCKET=config-files
+  -e ECS_SQUID_CONFIG_S3_PREFIX=squid
   -e AWS_ACCESS_KEY_ID=ASIAABCDEF00GHI0JK0L
   -e AWS_SECRET_ACCESS_KEY=xaitooGheiJ4ieBaeshah3omush3Bei3wie6Ahz0
   -e AWS_ASSUMEROLE_ACCOUNT=012345678901
