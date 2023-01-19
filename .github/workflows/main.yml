@@ -71,6 +71,9 @@ jobs:
           push: true
           tags: dwpdigital/squid-s3:${{ needs.get-publish-version.outputs.publish-version }},dwpdigital/squid-s3:latest
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            DOCKER_BUILDKIT=0
+            COMPOSE_DOCKER_CLI_BUILD=0
 
       - name: Create version file
         run: |
