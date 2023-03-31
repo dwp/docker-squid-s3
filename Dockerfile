@@ -1,6 +1,6 @@
 # Builds a docker image for Squid with config retrieved from S3
 
-FROM alpine:3.11 AS base
+FROM alpine:3.14 AS base
 
 RUN apk update \
     && apk upgrade
