@@ -1,3 +1,5 @@
+# DO NOT USE THIS REPO - MIGRATED TO GITLAB
+
 # docker-squid-s3
 Docker container with Squid + config files retrieved from S3.
 Container images are available via https://hub.docker.com/r/dwpdigital/squid-s3.
